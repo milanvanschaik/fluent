@@ -42,7 +42,7 @@ class Entity extends AbstractBuilder
      * Depending on the cache mode selected, you may also need to configure
      * lock modes.
      *
-     * @param int         $usage  Cache mode. use ClassMetadataInfo::CACHE_USAGE_* constants.
+     * @param int         $usage  Cache mode. use ClassMetadata::CACHE_USAGE_* constants.
      *                            Defaults to READ_ONLY mode.
      * @param string|null $region The cache region to be used. Doctrine will use a default region
      *                            for each entity, if none is provided.
