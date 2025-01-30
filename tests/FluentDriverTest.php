@@ -90,7 +90,7 @@ class FluentDriverTest extends TestCase
 
         $driver->loadMetadataForClass(
             StubEmbeddable::class,
-            new ClassMetadata(StubEmbeddable::class)
+            new ORMClassMetadata(StubEmbeddable::class)
         );
         $this->assertInstanceOf(
             EmbeddableMapper::class,
