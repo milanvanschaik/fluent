@@ -3,6 +3,7 @@
 namespace LaravelDoctrine\Fluent\Extensions;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataFactory;
 
 class ExtensibleClassMetadataFactory extends ClassMetadataFactory
@@ -17,7 +18,7 @@ class ExtensibleClassMetadataFactory extends ClassMetadataFactory
      *
      * {@inheritdoc}
      */
-    public function setEntityManager(EntityManagerInterface $em)
+    public function setEntityManager(EntityManagerInterface $em): void
     {
         parent::setEntityManager($em);
 
@@ -29,7 +30,7 @@ class ExtensibleClassMetadataFactory extends ClassMetadataFactory
      *
      * {@inheritdoc}
      */
-    protected function newClassMetadataInstance($className)
+    protected function newClassMetadataInstance($className): ClassMetadata
     {
         return new ExtensibleClassMetadata($className, $this->entityManager->getConfiguration()->getNamingStrategy());
     }
