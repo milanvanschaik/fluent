@@ -64,7 +64,7 @@ class BuilderTest extends TestCase
         'bigInteger'       => Types::BIGINT,
         'float'            => Types::FLOAT,
         'decimal'          => Types::DECIMAL,
-        // 'object'           => Types::OBJECT, // TODO: Deprecated in DBAL 4?
+        // 'object'           => Types::OBJECT, // TODO: Deprecated in DBAL 4 - https://github.com/doctrine/dbal/blob/4.2.x/UPGRADE.md#bc-break-removed-array-and-object-column-types
         'boolean'          => Types::BOOLEAN,
         'jsonArray'        => Types::JSON,
         'date'             => Types::DATE_MUTABLE,
@@ -81,7 +81,7 @@ class BuilderTest extends TestCase
         'binary'           => Types::BINARY,
         'guid'             => Types::GUID,
         'blob'             => Types::BLOB,
-        'array'            => Types::ARRAY,
+        // 'array'            => Types::ARRAY, // TODO: Deprecated in DBAL 4 - https://github.com/doctrine/dbal/blob/4.2.x/UPGRADE.md#bc-break-removed-array-and-object-column-types
         'simpleArray'      => Types::SIMPLE_ARRAY,
     ];
 
