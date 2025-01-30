@@ -125,7 +125,7 @@ class JoinColumn
      */
     public function getJoinColumn()
     {
-        return $this->joinColumn ?: $this->namingStrategy->joinColumnName($this->relation);
+        return $this->joinColumn ?: $this->namingStrategy->joinColumnName($this->relation); // TODO: Add table name as 2nd arg. See https://github.com/slevomat/doctrine-orm/blob/master/UPGRADE.md#bc-break-namingstrategy-interface-changes
     }
 
     /**
