@@ -102,7 +102,8 @@ class Field implements Buildable
     {
         $type = Type::getType($type);
 
-        $field = $builder->createField($name, $type->getName());
+        // https://github.com/doctrine/dbal/blob/4.2.x/UPGRADE.md#deprecated-typegetname
+        $field = $builder->createField($name, Type::getTypeRegistry()->lookupName($type));
 
         return new static($field, $builder, $type, $name);
     }
