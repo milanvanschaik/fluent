@@ -64,7 +64,7 @@ class BuilderTest extends TestCase
         'bigInteger'       => Types::BIGINT,
         'float'            => Types::FLOAT,
         'decimal'          => Types::DECIMAL,
-        'object'           => Types::OBJECT,
+        // 'object'           => Types::OBJECT, // TODO: Deprecated in DBAL 4?
         'boolean'          => Types::BOOLEAN,
         'jsonArray'        => Types::JSON,
         'date'             => Types::DATE_MUTABLE,
