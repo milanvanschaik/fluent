@@ -43,7 +43,7 @@ class ManyToOne extends AbstractRelation
     {
         parent::__construct($builder, $namingStrategy, $relation, $entity);
 
-        $this->addJoinColumn($relation);
+        $this->addJoinColumn($relation, $entity);
     }
 
     /**

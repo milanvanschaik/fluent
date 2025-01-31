@@ -12,6 +12,11 @@ class JoinColumn
     protected $relation;
 
     /**
+     * @var class-string
+     */
+    protected $className;
+
+    /**
      * @var string
      */
     protected $joinColumn;
@@ -48,6 +53,7 @@ class JoinColumn
 
     /**
      * @param NamingStrategy $namingStrategy
+     * @param class-string   $className
      * @param string         $relation
      * @param string|null    $joinColumn
      * @param string|null    $referenceColumn
@@ -59,6 +65,7 @@ class JoinColumn
     public function __construct(
         NamingStrategy $namingStrategy,
         $relation,
+        $className,
         $joinColumn = null,
         $referenceColumn = null,
         $nullable = true,
@@ -68,6 +75,7 @@ class JoinColumn
     ) {
         $this->namingStrategy = $namingStrategy;
         $this->relation = $relation;
+        $this->className = $className;
         $this->joinColumn = $joinColumn;
         $this->referenceColumn = $referenceColumn;
         $this->nullable = $nullable;
@@ -125,7 +133,7 @@ class JoinColumn
      */
     public function getJoinColumn()
     {
-        return $this->joinColumn ?: $this->namingStrategy->joinColumnName($this->relation); // TODO: Add table name as 2nd arg. See https://github.com/slevomat/doctrine-orm/blob/master/UPGRADE.md#bc-break-namingstrategy-interface-changes
+        return $this->joinColumn ?: $this->namingStrategy->joinColumnName($this->relation, $this->className); // TODO: Add table name as 2nd arg. See https://github.com/slevomat/doctrine-orm/blob/master/UPGRADE.md#bc-break-namingstrategy-interface-changes
     }
 
     /**

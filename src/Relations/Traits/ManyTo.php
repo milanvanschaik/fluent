@@ -31,18 +31,20 @@ trait ManyTo
     }
 
     /**
-     * @param string      $relation
-     * @param string|null $joinColumn
-     * @param string|null $referenceColumn
-     * @param bool|false  $nullable
-     * @param bool|false  $unique
-     * @param string|null $onDelete
-     * @param string|null $columnDefinition
+     * @param string       $relation
+     * @param class-string $entity
+     * @param string|null  $joinColumn
+     * @param string|null  $referenceColumn
+     * @param bool|false   $nullable
+     * @param bool|false   $unique
+     * @param string|null  $onDelete
+     * @param string|null  $columnDefinition
      *
      * @return $this
      */
     public function addJoinColumn(
         $relation,
+        $entity,
         $joinColumn = null,
         $referenceColumn = null,
         $nullable = false,
@@ -53,6 +55,7 @@ trait ManyTo
         $joinColumn = new JoinColumn(
             $this->getNamingStrategy(),
             $relation,
+            $entity,
             $joinColumn,
             $referenceColumn,
             $nullable,
