@@ -140,7 +140,7 @@ class AttributeOverride implements Buildable
      *
      * @return AssociationMapping
      */
-    protected function mergeRecursively(AssociationMapping $source, AssociationMapping $target)
+    protected function mergeRecursively(FieldMapping $source, AssociationMapping $target)
     {
         foreach ($source as $key => $value) {
             if (!isset($target[$key])) {
