@@ -2,6 +2,7 @@
 
 namespace LaravelDoctrine\Fluent\Builders\Overrides;
 
+use Doctrine\ORM\Mapping\AssociationMapping;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\NamingStrategy;
@@ -104,16 +105,16 @@ class AssociationOverride implements Buildable
         // ManyToMany mappings
         if ($this->hasJoinTable($target)) {
             $overrideMapping['joinTable'] = $this->mapJoinTable(
-                $target['joinTable'],
-                $source['joinTable']
+                $target->joinTable,
+                $source->joinTable,
             );
         }
 
         // ManyToOne mappings
         if ($this->hasJoinColumns($target)) {
             $overrideMapping['joinColumns'] = $this->mapJoinColumns(
-                $target['joinColumns'],
-                $source['joinColumns']
+                $target->joinTable,
+                $source->joinTable,
             );
         }
 
@@ -127,10 +128,8 @@ class AssociationOverride implements Buildable
      * @param ClassMetadataBuilder $builder
      *
      * @throws \Doctrine\ORM\Mapping\MappingException
-     *
-     * @return array
      */
-    protected function convertToMappingArray(ClassMetadataBuilder $builder)
+    protected function convertToMappingArray(ClassMetadataBuilder $builder): AssociationMapping
     {
         $metadata = $builder->getClassMetadata();
 
@@ -153,13 +152,13 @@ class AssociationOverride implements Buildable
      *
      * @return mixed
      */
-    protected function getAssociationBuilder(ClassMetadataBuilder $builder, array $source)
+    protected function getAssociationBuilder(ClassMetadataBuilder $builder, AssociationMapping $source)
     {
-        return new $this->relations[$source['type']](
+        return new $this->relations[$source->type](
             $builder,
             $this->namingStrategy,
             $this->name,
-            $source['targetEntity']
+            $source->targetEntity,
         );
     }
 
@@ -221,9 +220,9 @@ class AssociationOverride implements Buildable
      *
      * @return bool
      */
-    protected function hasJoinColumns(array $target = [])
+    protected function hasJoinColumns(AssociationMapping $target)
     {
-        return isset($target['joinColumns']);
+        return isset($target->joinColumns);
     }
 
     /**
