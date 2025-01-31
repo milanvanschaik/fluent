@@ -135,7 +135,7 @@ class AttributeOverride implements Buildable
      * Merges the field mappings recursively, by keeping originals
      * settings, but replacing and adding new once.
      */
-    protected function mergeRecursively(FieldMapping $source, FieldMapping $target): AssociationMapping
+    protected function mergeRecursively(FieldMapping $source, FieldMapping $target): FieldMapping
     {
         foreach ($source as $key => $value) {
             if (!isset($target[$key])) {
