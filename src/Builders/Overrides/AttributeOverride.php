@@ -2,6 +2,7 @@
 
 namespace LaravelDoctrine\Fluent\Builders\Overrides;
 
+use Doctrine\ORM\Mapping\AssociationMapping;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\NamingStrategy;
@@ -92,15 +93,15 @@ class AttributeOverride implements Buildable
 
     /**
      * @param ClassMetadataBuilder $builder
-     * @param array                $mapping
+     * @param AssociationMapping                $mapping
      *
      * @return Field
      */
-    protected function getFieldBuilder(ClassMetadataBuilder $builder, array $mapping)
+    protected function getFieldBuilder(ClassMetadataBuilder $builder, AssociationMapping $mapping)
     {
         return Field::make(
             $builder,
-            $mapping['type'],
+            $mapping->type,
             $this->name
         );
     }
@@ -133,12 +134,12 @@ class AttributeOverride implements Buildable
      * Merges the field mappings recursively, by keeping originals
      * settings, but replacing and adding new once.
      *
-     * @param array $source
-     * @param array $target
+     * @param AssociationMapping $source
+     * @param AssociationMapping $target
      *
-     * @return array
+     * @return AssociationMapping
      */
-    protected function mergeRecursively(array $source, array $target)
+    protected function mergeRecursively(AssociationMapping $source, AssociationMapping $target)
     {
         foreach ($source as $key => $value) {
             if (!isset($target[$key])) {
