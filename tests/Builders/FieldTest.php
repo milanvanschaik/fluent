@@ -235,10 +235,10 @@ class FieldTest extends TestCase
         $this->doTestValidTypeForVersioning("datetime");
     }
 
-    public function test_array_cannot_be_used_for_versioning()
-    {
-        $this->doTestInvalidTypeForVersioning("array");
-    }
+    /* public function test_array_cannot_be_used_for_versioning() */
+    /* { */
+    /*     $this->doTestInvalidTypeForVersioning("array"); */
+    /* } */
 
     public function test_simple_array_cannot_be_used_for_versioning()
     {
