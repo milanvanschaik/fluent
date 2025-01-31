@@ -5,6 +5,7 @@ namespace LaravelDoctrine\Fluent\Builders\Overrides;
 use Doctrine\ORM\Mapping\AssociationMapping;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\Mapping\FieldMapping;
 use Doctrine\ORM\Mapping\NamingStrategy;
 use InvalidArgumentException;
 use LaravelDoctrine\Fluent\Buildable;
@@ -97,7 +98,7 @@ class AttributeOverride implements Buildable
      *
      * @return Field
      */
-    protected function getFieldBuilder(ClassMetadataBuilder $builder, AssociationMapping $mapping)
+    protected function getFieldBuilder(ClassMetadataBuilder $builder, FieldMapping $mapping)
     {
         return Field::make(
             $builder,
